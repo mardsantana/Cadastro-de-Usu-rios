@@ -11,6 +11,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @Log4j2
@@ -31,7 +32,6 @@ public class UsuarioApplicationService implements UsuarioService{
         log.info("[finish] UsuarioApplicationService - buscaUsuarios");
         return UsuariosListResponse.converte(usuarios);
     }
-
     @Override
     public UsuarioDetailResponse buscarUsuarioPorCpf(String cpf) {
         log.info("[start] UsarioApplicationService - buscarUsuarioPorCpf");
@@ -40,5 +40,12 @@ public class UsuarioApplicationService implements UsuarioService{
         return new UsuarioDetailResponse(usuario);
     }
 
+    @Override
+    public void deleteUsuarioAtravesCPF(String cpf) {
+        log.info("[start] UsuarioApplicationService - deleteUsuarioAtravesCPF");
+        Usuario usuario = usuarioRepository.buscarUsuarioPorCpf(cpf);
+        usuarioRepository.deteleUsuario(usuario);
+        log.info("[start] UsuarioApplicationService - deleteUsuarioAtravesCPF");
+    }
 
 }

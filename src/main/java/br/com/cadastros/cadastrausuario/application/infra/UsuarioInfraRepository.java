@@ -21,7 +21,6 @@ public class UsuarioInfraRepository implements UsuarioRepository {
         log.info("[finsih] UsuarioInfraRepository - save");
         return usuario;
     }
-
     @Override
     public List<Usuario> buscaUsuarios() {
         log.info("[start] UsuarioInfraRepository - buscaUsuarios");
@@ -29,7 +28,6 @@ public class UsuarioInfraRepository implements UsuarioRepository {
         log.info("[finish] UsuarioInfraRepository - buscaUsuarios");
         return usuariosGerais;
     }
-
     @Override
     public Usuario buscarUsuarioPorCpf(String cpf) {
         log.info("[start] UsuarioInfraRepository - buscarUsuarioPorCpf");
@@ -37,5 +35,11 @@ public class UsuarioInfraRepository implements UsuarioRepository {
                 .orElseThrow(() -> new RuntimeException("Usuário não Encontrado"));
         log.info("[start] UsuarioInfraRepository - buscarUsuarioPorCpf");
         return usuario;
+    }
+    @Override
+    public void deteleUsuario(Usuario usuario) {
+        log.info("[start] UsuarioInfraRepository - deteleUsuario");
+        usuarioSpringDataJPARepository.delete(usuario);
+        log.info("[finish] UsuarioInfraRepository - deteleUsuario");
     }
 }

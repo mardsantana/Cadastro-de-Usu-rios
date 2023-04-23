@@ -6,8 +6,7 @@ import java.util.List;
 public interface UsuarioRepository {
 
     Usuario save(Usuario usuario);
-
     List<Usuario> buscaUsuarios();
-
     Usuario buscarUsuarioPorCpf(String cpf);
+    void deteleUsuario(Usuario usuario);
 }

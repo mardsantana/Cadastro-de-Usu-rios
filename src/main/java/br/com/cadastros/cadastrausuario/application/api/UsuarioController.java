@@ -1,15 +1,14 @@
 package br.com.cadastros.cadastrausuario.application.api;
 
-import br.com.cadastros.cadastrausuario.application.domain.Usuario;
 import br.com.cadastros.cadastrausuario.application.service.UsuarioService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @Log4j2
@@ -34,7 +33,6 @@ public class UsuarioController {
       log.info("[finish] UsuarioController - getTodosUsuarios");
       return usuarios;
     }
-
     @GetMapping(value = "/{cpf}")
     @ResponseStatus(HttpStatus.OK)
     public UsuarioDetailResponse getUsuarioPorCPF(@PathVariable String cpf){
@@ -43,5 +41,13 @@ public class UsuarioController {
         UsuarioDetailResponse detailResponse = usuarioService.buscarUsuarioPorCpf(cpf);
         log.info("[finish] UsuarioController - getUsuarioPorCPF");
         return detailResponse;
+    }
+    @DeleteMapping(value = "/{cpf}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    void deleteUsuarioAtravesCPF(@PathVariable String cpf){
+        log.info("[start] UsuarioController - deleteUusuarioAtravesCPF");
+        log.info("[cpf]{}", cpf);
+        usuarioService.deleteUsuarioAtravesCPF(cpf);
+        log.info("[finish] UsuarioController - deleteUusuarioAtravesCPF");
     }
 }
