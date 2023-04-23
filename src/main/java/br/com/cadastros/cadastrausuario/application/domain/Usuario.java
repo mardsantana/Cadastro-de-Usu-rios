@@ -1,6 +1,7 @@
 package br.com.cadastros.cadastrausuario.application.domain;
 
 import br.com.cadastros.cadastrausuario.application.api.UsuarioRequest;
+import br.com.cadastros.cadastrausuario.application.api.UsuariosListResponse;
 import br.com.cadastros.cadastrausuario.application.parentes.Parentes;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -31,11 +32,32 @@ public class Usuario {
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Parentes> parentes = new ArrayList<>();
 
+    public Usuario(){
+
+    }
+
     public Usuario(UsuarioRequest usuarioRequest) {
         this.nome = usuarioRequest.getNome();
         this.sobrenome = usuarioRequest.getSobrenome();
         this.cpf = usuarioRequest.getCpf();
         this.endereco = usuarioRequest.getEndereco();
+    }
+
+
+    public Usuario(UUID idUsuario, String nome, String cpf, String sobrenome, String endereco) {
+        this.idUsuario = idUsuario;
+        this.nome = nome;
+        this.sobrenome = sobrenome;
+        this.cpf = cpf;
+        this.endereco = endereco;
+    }
+
+    public void UsuariosGerais(UsuariosListResponse usuariosListResponse) {
+        this.nome = usuariosListResponse.getNome();
+        this.sobrenome = usuariosListResponse.getSobrenome();
+        this.cpf = usuariosListResponse.getCpf();
+        this.endereco = usuariosListResponse.getEndereco();
+        this.parentes = new ArrayList<>();
     }
 
 }
