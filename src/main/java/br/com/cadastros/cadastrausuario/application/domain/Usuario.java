@@ -1,5 +1,6 @@
 package br.com.cadastros.cadastrausuario.application.domain;
 
+import br.com.cadastros.cadastrausuario.application.api.UsuarioModificaRequest;
 import br.com.cadastros.cadastrausuario.application.api.UsuarioRequest;
 import br.com.cadastros.cadastrausuario.application.api.UsuariosListResponse;
 import br.com.cadastros.cadastrausuario.application.parentes.Parentes;
@@ -54,5 +55,10 @@ public class Usuario {
         this.cpf = usuariosListResponse.getCpf();
         this.endereco = usuariosListResponse.getEndereco();
         this.parentes = new ArrayList<>();
+    }
+    public void modifica(UsuarioModificaRequest usuarioRequest) {
+        this.nome = usuarioRequest.getNome();
+        this.sobrenome = usuarioRequest.getSobrenome();
+        this.endereco = usuarioRequest.getEndereco();
     }
 }

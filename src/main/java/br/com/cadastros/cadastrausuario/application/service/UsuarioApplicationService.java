@@ -1,9 +1,6 @@
 package br.com.cadastros.cadastrausuario.application.service;
 
-import br.com.cadastros.cadastrausuario.application.api.UsuarioDetailResponse;
-import br.com.cadastros.cadastrausuario.application.api.UsuarioRequest;
-import br.com.cadastros.cadastrausuario.application.api.UsuarioResponse;
-import br.com.cadastros.cadastrausuario.application.api.UsuariosListResponse;
+import br.com.cadastros.cadastrausuario.application.api.*;
 import br.com.cadastros.cadastrausuario.application.domain.Usuario;
 import br.com.cadastros.cadastrausuario.application.repository.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
@@ -45,5 +42,13 @@ public class UsuarioApplicationService implements UsuarioService{
         Usuario usuario = usuarioRepository.buscarUsuarioPorCpf(cpf);
         usuarioRepository.deleteUsuario(usuario);
         log.info("[start] UsuarioApplicationService - deleteUsuarioAtravesCPF");
+    }
+    @Override
+    public void patchUsuario(String cpf, UsuarioModificaRequest usuarioModificaRequest) {
+        log.info("[start] UsuarioApplicationService - patchUsuario");
+        Usuario usuario = usuarioRepository.buscarUsuarioPorCpf(cpf);
+        usuario.modifica(usuarioModificaRequest);
+        usuarioRepository.save(usuario);
+        log.info("[finish] UsuarioApplicationService - patchUsuario");
     }
 }

@@ -50,4 +50,12 @@ public class UsuarioController {
         usuarioService.deleteUsuarioAtravesCPF(cpf);
         log.info("[finish] UsuarioController - deleteUusuarioAtravesCPF");
     }
+    @PatchMapping(value = "/{cpf}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    void patchUsuario(@PathVariable String cpf, @Valid @RequestBody UsuarioModificaRequest usuarioModificaRequest){
+        log.info("[start] UsuarioController - patchUsuario");
+        log.info("[cpf]{}", cpf);
+        usuarioService.patchUsuario(cpf, usuarioModificaRequest);
+        log.info("[finsih] UsuarioController - patchUsuario");
+    }
 }
