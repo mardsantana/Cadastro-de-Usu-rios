@@ -39,13 +39,11 @@ public class UsuarioApplicationService implements UsuarioService{
         log.info("[finish] UsarioApplicationService - buscarUsuarioPorCpf");
         return new UsuarioDetailResponse(usuario);
     }
-
     @Override
     public void deleteUsuarioAtravesCPF(String cpf) {
         log.info("[start] UsuarioApplicationService - deleteUsuarioAtravesCPF");
         Usuario usuario = usuarioRepository.buscarUsuarioPorCpf(cpf);
-        usuarioRepository.deteleUsuario(usuario);
+        usuarioRepository.deleteUsuario(usuario);
         log.info("[start] UsuarioApplicationService - deleteUsuarioAtravesCPF");
     }
-
 }

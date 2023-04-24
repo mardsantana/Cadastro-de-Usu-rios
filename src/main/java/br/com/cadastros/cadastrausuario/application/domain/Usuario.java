@@ -35,15 +35,12 @@ public class Usuario {
     public Usuario(){
 
     }
-
     public Usuario(UsuarioRequest usuarioRequest) {
         this.nome = usuarioRequest.getNome();
         this.sobrenome = usuarioRequest.getSobrenome();
         this.cpf = usuarioRequest.getCpf();
         this.endereco = usuarioRequest.getEndereco();
     }
-
-
     public Usuario(UUID idUsuario, String nome, String cpf, String sobrenome, String endereco) {
         this.idUsuario = idUsuario;
         this.nome = nome;
@@ -51,7 +48,6 @@ public class Usuario {
         this.cpf = cpf;
         this.endereco = endereco;
     }
-
     public void UsuariosGerais(UsuariosListResponse usuariosListResponse) {
         this.nome = usuariosListResponse.getNome();
         this.sobrenome = usuariosListResponse.getSobrenome();
@@ -59,5 +55,4 @@ public class Usuario {
         this.endereco = usuariosListResponse.getEndereco();
         this.parentes = new ArrayList<>();
     }
-
 }

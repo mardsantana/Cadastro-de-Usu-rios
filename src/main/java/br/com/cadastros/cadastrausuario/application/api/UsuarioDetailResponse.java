@@ -21,7 +21,6 @@ public class UsuarioDetailResponse {
         this.cpf = usuario.getCpf();
         this.endereco = usuario.getEndereco();
     }
-
     public UsuarioDetailResponse(String nome, String cpf) {
         this.nome = nome;
         this.cpf = cpf;
@@ -29,9 +28,7 @@ public class UsuarioDetailResponse {
         this.sobrenome = "";
         this.endereco = "";
     }
-
     public Usuario buscarUsuarioPorCpf(String cpf) {
         return new Usuario(this.idUsuario, this.nome, this.sobrenome, cpf, this.endereco);
     }
-
 }

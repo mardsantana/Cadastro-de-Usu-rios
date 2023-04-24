@@ -7,6 +7,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.UUID;
 
 @Repository
 @Log4j2
@@ -37,9 +38,9 @@ public class UsuarioInfraRepository implements UsuarioRepository {
         return usuario;
     }
     @Override
-    public void deteleUsuario(Usuario usuario) {
-        log.info("[start] UsuarioInfraRepository - deteleUsuario");
+    public void deleteUsuario(Usuario usuario) {
+        log.info("[start] UsuarioInfraRepository - deleteUsuario");
         usuarioSpringDataJPARepository.delete(usuario);
-        log.info("[finish] UsuarioInfraRepository - deteleUsuario");
+        log.info("[finish] UsuarioInfraRepository - deleteUsuario");
     }
 }
