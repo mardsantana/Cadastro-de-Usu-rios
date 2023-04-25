@@ -3,7 +3,7 @@ package br.com.cadastros.cadastrausuario.application.domain;
 import br.com.cadastros.cadastrausuario.application.api.UsuarioModificaRequest;
 import br.com.cadastros.cadastrausuario.application.api.UsuarioRequest;
 import br.com.cadastros.cadastrausuario.application.api.UsuariosListResponse;
-import br.com.cadastros.cadastrausuario.application.parentes.Parentes;
+import br.com.cadastros.cadastrausuario.application.parentes.domain.parentes.Parentes;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
