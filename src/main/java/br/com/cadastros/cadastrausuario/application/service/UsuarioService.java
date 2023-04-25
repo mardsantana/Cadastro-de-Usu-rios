@@ -11,4 +11,5 @@ public interface UsuarioService {
     UsuarioDetailResponse buscarUsuarioPorCpf(String cpf);
     void deleteUsuarioAtravesCPF(String cpf);
     void patchUsuario(String cpf, UsuarioModificaRequest usuarioModificaRequest);
+
 }
