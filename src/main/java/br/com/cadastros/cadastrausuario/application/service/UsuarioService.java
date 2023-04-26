@@ -3,7 +3,6 @@ package br.com.cadastros.cadastrausuario.application.service;
 import br.com.cadastros.cadastrausuario.application.api.*;
 
 import java.util.List;
-import java.util.UUID;
 
 public interface UsuarioService {
     UsuarioResponse criaUsuario(UsuarioRequest usuarioRequest);
