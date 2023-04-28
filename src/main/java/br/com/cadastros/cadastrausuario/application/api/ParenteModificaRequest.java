@@ -7,12 +7,9 @@ import lombok.Value;
 import java.util.List;
 
 @Value
-public class UsuarioModificaRequest {
+public class ParenteModificaRequest {
     @NotBlank
     private String nome;
     @NotBlank
     private String sobrenome;
-    @NotNull
-    private String endereco;
-    private List<ParenteRequest> parentes;
 }

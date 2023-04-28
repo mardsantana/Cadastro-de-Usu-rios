@@ -1,5 +1,6 @@
 package br.com.cadastros.cadastrausuario.application.domain;
 
+import br.com.cadastros.cadastrausuario.application.api.ParenteRequest;
 import br.com.cadastros.cadastrausuario.application.api.UsuarioModificaRequest;
 import br.com.cadastros.cadastrausuario.application.api.UsuarioRequest;
 import jakarta.persistence.*;
@@ -8,6 +9,8 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import org.hibernate.validator.constraints.br.CPF;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -26,8 +29,13 @@ public class Usuario {
     private String cpf;
     @NotNull
     private String endereco;
+    @OneToMany(mappedBy = "usuario", fetch = FetchType.EAGER)
+    private List<Parente> parentes = new ArrayList<>();;
 
     public Usuario(){
+    }
+    public List<Parente> getParentes() {
+        return parentes;
     }
     public Usuario(UsuarioRequest usuarioRequest) {
         this.nome = usuarioRequest.getNome();
@@ -47,4 +55,9 @@ public class Usuario {
         this.sobrenome = usuarioRequest.getSobrenome();
         this.endereco = usuarioRequest.getEndereco();
     }
+    public void adicionaParente(ParenteRequest parenteRequest) {
+        this.nome = parenteRequest.getNome();
+        this.sobrenome = parenteRequest.getSobrenome();
+    }
+
 }

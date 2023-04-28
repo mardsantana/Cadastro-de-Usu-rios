@@ -19,43 +19,56 @@ public class UsuarioController {
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    UsuarioResponse postUsuario(@Valid @RequestBody UsuarioRequest usuarioRequest){
-       log.info("[start] UsuarioController - postUsuario");
-       UsuarioResponse usuarioCriado = usuarioService.criaUsuario(usuarioRequest);
-       log.info("[finish] UsuarioController - postUsuario");
-       return usuarioCriado;
+    UsuarioResponse postUsuario(@Valid @RequestBody UsuarioRequest usuarioRequest) {
+        log.info("[start] UsuarioController - postUsuario");
+        UsuarioResponse usuarioCriado = usuarioService.criaUsuario(usuarioRequest);
+        log.info("[finish] UsuarioController - postUsuario");
+        return usuarioCriado;
     }
+
     @GetMapping
     @ResponseStatus(code = HttpStatus.OK)
-    List<UsuariosListResponse> getTodosParentes(){
-      log.info("[start] UsuarioController - getTodosUsuarios");
-      List<UsuariosListResponse> usuarios = usuarioService.buscaUsuarios();
-      log.info("[finish] UsuarioController - getTodosUsuarios");
-      return usuarios;
+    List<UsuarioListDTO> getTodosParentes() {
+        log.info("[start] UsuarioController - getTodosUsuarios");
+        List<UsuarioListDTO> usuarios = usuarioService.buscaUsuarios();
+        log.info("[finish] UsuarioController - getTodosUsuarios");
+        return usuarios;
     }
+
     @GetMapping(value = "/{cpf}")
     @ResponseStatus(HttpStatus.OK)
-    public UsuarioDetailResponse getUsuarioPorCPF(@PathVariable String cpf){
+    public UsuarioDetailResponse getUsuarioPorCPF(@PathVariable String cpf) {
         log.info("[start] UsuarioController - getUsuarioPorCPF");
         log.info("[cpf]{}", cpf);
         UsuarioDetailResponse detailResponse = usuarioService.buscarUsuarioPorCpf(cpf);
         log.info("[finish] UsuarioController - getUsuarioPorCPF");
         return detailResponse;
     }
+
     @DeleteMapping(value = "/{cpf}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
-    void deleteUsuarioAtravesCPF(@PathVariable String cpf){
+    void deleteUsuarioAtravesCPF(@PathVariable String cpf) {
         log.info("[start] UsuarioController - deleteUusuarioAtravesCPF");
         log.info("[cpf]{}", cpf);
         usuarioService.deleteUsuarioAtravesCPF(cpf);
         log.info("[finish] UsuarioController - deleteUusuarioAtravesCPF");
     }
+
     @PatchMapping(value = "/{cpf}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
-    void patchUsuario(@PathVariable String cpf, @Valid @RequestBody UsuarioModificaRequest usuarioModificaRequest){
+    void patchUsuario(@PathVariable String cpf, @Valid @RequestBody UsuarioModificaRequest usuarioModificaRequest) {
         log.info("[start] UsuarioController - patchUsuario");
         log.info("[cpf]{}", cpf);
         usuarioService.patchUsuario(cpf, usuarioModificaRequest);
         log.info("[finsih] UsuarioController - patchUsuario");
+    }
+    // Método para Criar parentes e listar a um determinado Usuário.
+    @PostMapping("usuario/{idUsuario}/parentes")
+    @ResponseStatus(code = HttpStatus.CREATED)
+    ParenteResponse postParente(@PathVariable UUID idUsuario, @Valid @RequestBody ParenteRequest parenteRequest) {
+        log.info("[start] UsuarioController - postParente");
+        ParenteResponse parenteCriado = usuarioService.criaParente(idUsuario, parenteRequest);
+        log.info("[finish] UsuarioController - postParente");
+        return parenteCriado;
     }
 }

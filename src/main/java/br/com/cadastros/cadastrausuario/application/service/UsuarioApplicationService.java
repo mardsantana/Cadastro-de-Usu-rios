@@ -1,6 +1,7 @@
 package br.com.cadastros.cadastrausuario.application.service;
 
 import br.com.cadastros.cadastrausuario.application.api.*;
+import br.com.cadastros.cadastrausuario.application.domain.Parente;
 import br.com.cadastros.cadastrausuario.application.domain.Usuario;
 import br.com.cadastros.cadastrausuario.application.repository.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
@@ -8,6 +9,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @Log4j2
@@ -22,11 +24,11 @@ public class UsuarioApplicationService implements UsuarioService{
         return UsuarioResponse.builder().idUsuario(usuario.getIdUsuario()).build();
     }
     @Override
-    public List<UsuariosListResponse> buscaUsuarios() {
+    public List<UsuarioListDTO> buscaUsuarios() {
         log.info("[start] UsuarioApplicationService - buscaUsuarios");
         List<Usuario> usuarios = usuarioRepository.buscaUsuarios();
         log.info("[finish] UsuarioApplicationService - buscaUsuarios");
-        return UsuariosListResponse.converte(usuarios);
+        return UsuarioListDTO.converte(usuarios);
     }
     @Override
     public UsuarioDetailResponse buscarUsuarioPorCpf(String cpf) {
@@ -49,5 +51,18 @@ public class UsuarioApplicationService implements UsuarioService{
         usuario.modifica(usuarioModificaRequest);
         usuarioRepository.save(usuario);
         log.info("[finish] UsuarioApplicationService - patchUsuario");
+    }
+    // Método para Criar parentes e listar a um determinado Usuário.
+    @Override
+    public ParenteResponse criaParente(UUID idUsuario, ParenteRequest parenteRequest) {
+        log.info("[start] UsuarioApplicationService - criaParente");
+        Usuario usuario = usuarioRepository.findByID(idUsuario);
+        usuario.adicionaParente(parenteRequest);
+        usuarioRepository.save(usuario);
+        log.info("[finish] UsuarioApplicationService - criaParente");
+        return ParenteResponse.builder()
+                .idParente(usuario.getParentes()
+                        .get(usuario.getParentes().size() - 1)
+                        .getIdParente()).build();
     }
 }

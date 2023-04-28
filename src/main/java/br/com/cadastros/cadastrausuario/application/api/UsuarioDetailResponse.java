@@ -13,6 +13,7 @@ public class UsuarioDetailResponse {
     private String sobrenome;
     private String cpf;
     private String endereco;
+    private UUID parentes;
 
     public UsuarioDetailResponse(Usuario usuario) {
         this.idUsuario = usuario.getIdUsuario();
@@ -20,10 +21,12 @@ public class UsuarioDetailResponse {
         this.sobrenome = usuario.getSobrenome();
         this.cpf = usuario.getCpf();
         this.endereco = usuario.getEndereco();
+        this.parentes = usuario.getIdUsuario();
     }
-    public UsuarioDetailResponse(String nome, String cpf) {
+    public UsuarioDetailResponse(String nome, String cpf, UUID parentes) {
         this.nome = nome;
         this.cpf = cpf;
+        this.parentes = parentes;
         this.idUsuario = null;
         this.sobrenome = "";
         this.endereco = "";

@@ -43,4 +43,13 @@ public class UsuarioInfraRepository implements UsuarioRepository {
         usuarioSpringDataJPARepository.delete(usuario);
         log.info("[finish] UsuarioInfraRepository - deleteUsuario");
     }
+    // Método para Criar parentes e listar a um determinado Usuário.
+    @Override
+    public Usuario findByID(UUID idUsuario) {
+        log.info("[start] UsuarioInfraRepository - findByID");
+        Usuario usuario = usuarioSpringDataJPARepository.findById(idUsuario)
+                .orElseThrow(() -> new RuntimeException("Usuário não Encontrado"));
+        log.info("[finish] UsuarioInfraRepository - findByID");
+        return usuario;
+    }
 }

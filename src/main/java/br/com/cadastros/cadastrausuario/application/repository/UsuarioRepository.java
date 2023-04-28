@@ -11,4 +11,5 @@ public interface UsuarioRepository {
     List<Usuario> buscaUsuarios();
     Usuario buscarUsuarioPorCpf(String cpf);
     void deleteUsuario(Usuario usuario);
+    Usuario findByID(UUID idUsuario);
 }
