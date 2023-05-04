@@ -19,7 +19,4 @@ public class Parente {
     private String sobrenome;
     @NotBlank
     private String parentesco;
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_usuario")
-    private Usuario usuario;
 }

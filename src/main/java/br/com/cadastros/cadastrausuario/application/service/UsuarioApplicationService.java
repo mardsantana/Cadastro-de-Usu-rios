@@ -9,13 +9,15 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.UUID;
+import java.util.Optional;
 
 @Service
 @Log4j2
 @RequiredArgsConstructor
 public class UsuarioApplicationService implements UsuarioService{
     private final UsuarioRepository usuarioRepository;
+
+
     @Override
     public UsuarioResponse criaUsuario(UsuarioRequest usuarioRequest) {
         log.info("[start] UsuarioApplicationService - criaUsuario");
@@ -53,16 +55,6 @@ public class UsuarioApplicationService implements UsuarioService{
         log.info("[finish] UsuarioApplicationService - patchUsuario");
     }
     // Método para Criar parentes e listar a um determinado Usuário.
-    @Override
-    public ParenteResponse criaParente(UUID idUsuario, ParenteRequest parenteRequest) {
-        log.info("[start] UsuarioApplicationService - criaParente");
-        Usuario usuario = usuarioRepository.findByID(idUsuario);
-        usuario.adicionaParente(parenteRequest);
-        usuarioRepository.save(usuario);
-        log.info("[finish] UsuarioApplicationService - criaParente");
-        return ParenteResponse.builder()
-                .idParente(usuario.getParentes()
-                        .get(usuario.getParentes().size() - 1)
-                        .getIdParente()).build();
-    }
+
+
 }

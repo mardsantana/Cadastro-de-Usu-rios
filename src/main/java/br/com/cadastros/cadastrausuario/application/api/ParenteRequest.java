@@ -2,7 +2,7 @@ package br.com.cadastros.cadastrausuario.application.api;
 
 
 import jakarta.validation.constraints.NotBlank;
-import lombok.Value;
+import lombok.Value;;
 
 @Value
 public class ParenteRequest {

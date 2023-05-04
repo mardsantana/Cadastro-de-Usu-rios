@@ -1,9 +1,10 @@
 package br.com.cadastros.cadastrausuario.application.repository;
 
 import br.com.cadastros.cadastrausuario.application.domain.Usuario;
+import org.springframework.data.jpa.repository.JpaRepository;
+
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 public interface UsuarioRepository {
 
@@ -11,5 +12,4 @@ public interface UsuarioRepository {
     List<Usuario> buscaUsuarios();
     Usuario buscarUsuarioPorCpf(String cpf);
     void deleteUsuario(Usuario usuario);
-    Usuario findByID(UUID idUsuario);
 }

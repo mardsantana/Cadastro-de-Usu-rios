@@ -4,6 +4,7 @@ import br.com.cadastros.cadastrausuario.application.api.ParenteRequest;
 import br.com.cadastros.cadastrausuario.application.api.UsuarioModificaRequest;
 import br.com.cadastros.cadastrausuario.application.api.UsuarioRequest;
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
@@ -29,8 +30,9 @@ public class Usuario {
     private String cpf;
     @NotNull
     private String endereco;
-    @OneToMany(mappedBy = "usuario", fetch = FetchType.EAGER)
-    private List<Parente> parentes = new ArrayList<>();;
+    @Valid
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Parente> parentes;
 
     public Usuario(){
     }
@@ -42,6 +44,7 @@ public class Usuario {
         this.sobrenome = usuarioRequest.getSobrenome();
         this.cpf = usuarioRequest.getCpf();
         this.endereco = usuarioRequest.getEndereco();
+        this.parentes = new ArrayList<>();
     }
     public Usuario(UUID idUsuario, String nome, String cpf, String sobrenome, String endereco) {
         this.idUsuario = idUsuario;
@@ -55,9 +58,4 @@ public class Usuario {
         this.sobrenome = usuarioRequest.getSobrenome();
         this.endereco = usuarioRequest.getEndereco();
     }
-    public void adicionaParente(ParenteRequest parenteRequest) {
-        this.nome = parenteRequest.getNome();
-        this.sobrenome = parenteRequest.getSobrenome();
-    }
-
 }

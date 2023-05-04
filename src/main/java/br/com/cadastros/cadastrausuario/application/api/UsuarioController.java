@@ -25,7 +25,6 @@ public class UsuarioController {
         log.info("[finish] UsuarioController - postUsuario");
         return usuarioCriado;
     }
-
     @GetMapping
     @ResponseStatus(code = HttpStatus.OK)
     List<UsuarioListDTO> getTodosParentes() {
@@ -34,7 +33,6 @@ public class UsuarioController {
         log.info("[finish] UsuarioController - getTodosUsuarios");
         return usuarios;
     }
-
     @GetMapping(value = "/{cpf}")
     @ResponseStatus(HttpStatus.OK)
     public UsuarioDetailResponse getUsuarioPorCPF(@PathVariable String cpf) {
@@ -44,7 +42,6 @@ public class UsuarioController {
         log.info("[finish] UsuarioController - getUsuarioPorCPF");
         return detailResponse;
     }
-
     @DeleteMapping(value = "/{cpf}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     void deleteUsuarioAtravesCPF(@PathVariable String cpf) {
@@ -53,7 +50,6 @@ public class UsuarioController {
         usuarioService.deleteUsuarioAtravesCPF(cpf);
         log.info("[finish] UsuarioController - deleteUusuarioAtravesCPF");
     }
-
     @PatchMapping(value = "/{cpf}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     void patchUsuario(@PathVariable String cpf, @Valid @RequestBody UsuarioModificaRequest usuarioModificaRequest) {
@@ -63,12 +59,5 @@ public class UsuarioController {
         log.info("[finsih] UsuarioController - patchUsuario");
     }
     // Método para Criar parentes e listar a um determinado Usuário.
-    @PostMapping("usuario/{idUsuario}/parentes")
-    @ResponseStatus(code = HttpStatus.CREATED)
-    ParenteResponse postParente(@PathVariable UUID idUsuario, @Valid @RequestBody ParenteRequest parenteRequest) {
-        log.info("[start] UsuarioController - postParente");
-        ParenteResponse parenteCriado = usuarioService.criaParente(idUsuario, parenteRequest);
-        log.info("[finish] UsuarioController - postParente");
-        return parenteCriado;
-    }
+
 }
