@@ -15,9 +15,9 @@ public class UsuarioListDTO {
     private String sobrenome;
     private String cpf;
     private String endereco;
-    private List<ParenteDTO> parentes;
+    private List<ParenteListDTO> parentes;
 
-    public UsuarioListDTO(UUID idUsuario, String nome, String sobrenome, String cpf, String endereco, List<ParenteDTO> parentes) {
+    public UsuarioListDTO(UUID idUsuario, String nome, String sobrenome, String cpf, String endereco, List<ParenteListDTO> parentes) {
         this.idUsuario = idUsuario;
         this.nome = nome;
         this.sobrenome = sobrenome;
@@ -31,23 +31,22 @@ public class UsuarioListDTO {
                         ,usuario.getSobrenome()
                         ,usuario.getCpf()
                         ,usuario.getEndereco()
-                        ,ParenteDTO.converte(usuario.getParentes())))
+                        ,ParenteListDTO.converte(usuario.getParentes())))
                 .collect(Collectors.toList());
     }
-
     @Value
-    public static class ParenteDTO {
+    public static class ParenteListDTO {
         private UUID idParente;
         private String nome;
         private String sobrenome;
         private String parentesco;
 
-        public static ParenteDTO converte(Parente parente) {
-            return new ParenteDTO(parente.getIdParente(), parente.getNome(), parente.getSobrenome(), parente.getParentesco());
+        public static ParenteListDTO converte(Parente parente) {
+            return new ParenteListDTO(parente.getIdParente(), parente.getNome(), parente.getSobrenome(), parente.getParentesco());
         }
-        public static List<ParenteDTO> converte(List<Parente> parentes) {
+        public static List<ParenteListDTO> converte(List<Parente> parentes) {
             return parentes.stream()
-                    .map(ParenteDTO::converte)
+                    .map(ParenteListDTO::converte)
                     .collect(Collectors.toList());
         }
     }

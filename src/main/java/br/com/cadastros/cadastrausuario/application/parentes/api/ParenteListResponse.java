@@ -1,5 +1,6 @@
 package br.com.cadastros.cadastrausuario.application.parentes.api;
 
+import br.com.cadastros.cadastrausuario.application.api.UsuarioListDTO;
 import br.com.cadastros.cadastrausuario.application.domain.Parente;
 import lombok.Value;
 
@@ -9,22 +10,9 @@ import java.util.stream.Collectors;
 
 @Value
 public class ParenteListResponse {
-    private UUID idParente;
-    private String nome;
-    private String sobrenome;
-    private String parentesco;
-    private List<ParenteRequest> parentes;
+    private List<Parente> parentes;
 
-    public static List<ParenteListResponse> converte(List<Parente> parentes) {
-        return parentes.stream()
-                .map((Parente parenteRequest) -> new ParenteListResponse(parenteRequest, parentes))
-                .collect(Collectors.toList());
-    }
-    public ParenteListResponse(Parente parenteRequest, List<Parente> parentes) {
-        this.idParente = getIdParente();
-        this.nome = getNome();
-        this.sobrenome = getSobrenome();
-        this.parentesco = getParentesco();
-        this.parentes = getParentes();
+    public static UsuarioListDTO.ParenteListDTO converte(Parente parente) {
+        return new UsuarioListDTO.ParenteListDTO(parente.getIdParente(), parente.getNome(), parente.getSobrenome(), parente.getParentesco());
     }
 }
