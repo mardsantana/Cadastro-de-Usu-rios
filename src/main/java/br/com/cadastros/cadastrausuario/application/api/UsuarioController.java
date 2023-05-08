@@ -8,7 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @Log4j2
@@ -58,6 +57,4 @@ public class UsuarioController {
         usuarioService.patchUsuario(cpf, usuarioModificaRequest);
         log.info("[finsih] UsuarioController - patchUsuario");
     }
-    // Método para Criar parentes e listar a um determinado Usuário.
-
 }

@@ -25,14 +25,6 @@ public class UsuarioDetailResponse {
         this.endereco = usuario.getEndereco();
         this.parentes = usuario.getIdUsuario();
     }
-    public UsuarioDetailResponse(String nome, String cpf, UUID parentes) {
-        this.nome = nome;
-        this.cpf = cpf;
-        this.parentes = parentes;
-        this.idUsuario = null;
-        this.sobrenome = "";
-        this.endereco = "";
-    }
     public Usuario buscarUsuarioPorCpf(String cpf) {
         return new Usuario(this.idUsuario, this.nome, this.sobrenome, cpf, this.endereco);
     }

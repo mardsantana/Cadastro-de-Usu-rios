@@ -1,5 +1,6 @@
 package br.com.cadastros.cadastrausuario.application.infra;
 
+import br.com.cadastros.cadastrausuario.application.domain.Parente;
 import br.com.cadastros.cadastrausuario.application.domain.Usuario;
 import br.com.cadastros.cadastrausuario.application.repository.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
@@ -7,7 +8,6 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 @Log4j2
@@ -43,5 +43,4 @@ public class UsuarioInfraRepository implements UsuarioRepository {
         usuarioSpringDataJPARepository.delete(usuario);
         log.info("[finish] UsuarioInfraRepository - deleteUsuario");
     }
-    // Método para Criar parentes e listar a um determinado Usuário.
 }

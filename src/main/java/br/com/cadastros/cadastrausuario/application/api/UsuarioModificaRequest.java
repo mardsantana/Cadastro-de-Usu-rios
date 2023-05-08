@@ -1,5 +1,6 @@
 package br.com.cadastros.cadastrausuario.application.api;
 
+import br.com.cadastros.cadastrausuario.application.parentes.api.ParenteRequest;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Value;

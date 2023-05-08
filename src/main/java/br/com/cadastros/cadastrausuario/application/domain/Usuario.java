@@ -1,6 +1,5 @@
 package br.com.cadastros.cadastrausuario.application.domain;
 
-import br.com.cadastros.cadastrausuario.application.api.ParenteRequest;
 import br.com.cadastros.cadastrausuario.application.api.UsuarioModificaRequest;
 import br.com.cadastros.cadastrausuario.application.api.UsuarioRequest;
 import jakarta.persistence.*;

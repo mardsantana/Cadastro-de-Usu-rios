@@ -15,9 +15,9 @@ public class UsuarioListDTO {
     private String sobrenome;
     private String cpf;
     private String endereco;
-    private List<Parente> parentes;
+    private List<ParenteDTO> parentes;
 
-    public UsuarioListDTO(UUID idUsuario, String nome, String sobrenome, String cpf, String endereco, List<Parente> parentes) {
+    public UsuarioListDTO(UUID idUsuario, String nome, String sobrenome, String cpf, String endereco, List<ParenteDTO> parentes) {
         this.idUsuario = idUsuario;
         this.nome = nome;
         this.sobrenome = sobrenome;
@@ -25,24 +25,30 @@ public class UsuarioListDTO {
         this.endereco = endereco;
         this.parentes = parentes;
     }
-
-
     public static List<UsuarioListDTO> converte(List<Usuario> usuarios) {
         return usuarios.stream()
                 .map(usuario -> new UsuarioListDTO(usuario.getIdUsuario(),usuario.getNome()
                         ,usuario.getSobrenome()
                         ,usuario.getCpf()
                         ,usuario.getEndereco()
-                        ,usuario.getParentes()))
+                        ,ParenteDTO.converte(usuario.getParentes())))
                 .collect(Collectors.toList());
     }
 
-    public UsuarioListDTO(Usuario usuario) {
-        this.idUsuario = usuario.getIdUsuario();
-        this.nome = usuario.getNome();
-        this.sobrenome = usuario.getSobrenome();
-        this.cpf = usuario.getCpf();
-        this.endereco = usuario.getEndereco();
-        this.parentes = usuario.getParentes();
+    @Value
+    public static class ParenteDTO {
+        private UUID idParente;
+        private String nome;
+        private String sobrenome;
+        private String parentesco;
+
+        public static ParenteDTO converte(Parente parente) {
+            return new ParenteDTO(parente.getIdParente(), parente.getNome(), parente.getSobrenome(), parente.getParentesco());
+        }
+        public static List<ParenteDTO> converte(List<Parente> parentes) {
+            return parentes.stream()
+                    .map(ParenteDTO::converte)
+                    .collect(Collectors.toList());
+        }
     }
 }

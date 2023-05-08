@@ -1,10 +1,9 @@
 package br.com.cadastros.cadastrausuario.application.repository;
 
+import br.com.cadastros.cadastrausuario.application.domain.Parente;
 import br.com.cadastros.cadastrausuario.application.domain.Usuario;
-import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface UsuarioRepository {
 

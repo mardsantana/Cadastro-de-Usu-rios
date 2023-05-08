@@ -1,4 +1,4 @@
-package br.com.cadastros.cadastrausuario.application.api;
+package br.com.cadastros.cadastrausuario.application.parentes.api;
 
 
 import jakarta.validation.constraints.NotBlank;
