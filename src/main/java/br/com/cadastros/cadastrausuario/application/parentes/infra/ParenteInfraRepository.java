@@ -1,7 +1,7 @@
 package br.com.cadastros.cadastrausuario.application.parentes.infra;
 
-import br.com.cadastros.cadastrausuario.application.parentes.repository.ParenteRepository;
-import br.com.cadastros.cadastrausuario.application.domain.Parente;
+import br.com.cadastros.cadastrausuario.application.parentes.application.repository.ParenteRepository;
+import br.com.cadastros.cadastrausuario.application.parentes.domain.Parente;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Repository;
@@ -23,10 +23,9 @@ public class ParenteInfraRepository implements ParenteRepository {
     }
 
     @Override
-    public List<Parente> findByidUsuario(UUID idUsuario) {
-        log.info("[start] ParenteInfraRepository - findByidUsuario");
-        var parentes = parenteSpringDataJPARepository.findAllByIdUsuario(idUsuario);
-        log.info("[finish] ParenteInfraRepository - findByidUsuario");
-        return parentes;
+    public List<Parente> buscaParentesPorUsuario(UUID idUsuario) {
+        List<Parente> listaParentes = parenteSpringDataJPARepository.findParenteByIdUsuario(idUsuario);
+        return listaParentes;
     }
+
 }
