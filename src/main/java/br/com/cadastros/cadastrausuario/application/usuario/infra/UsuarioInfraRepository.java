@@ -6,8 +6,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-import java.util.UUID;
 
 @Repository
 @Log4j2
@@ -35,11 +33,5 @@ public class UsuarioInfraRepository implements UsuarioRepository {
         log.info("[start] UsuarioInfraRepository - deleteUsuario");
         usuarioSpringDataJPARepository.delete(usuario);
         log.info("[finish] UsuarioInfraRepository - deleteUsuario");
-    }
-
-    @Override
-    public Usuario buscaPorCPF(String cpf) {
-        Usuario usuario = usuarioSpringDataJPARepository.findByCpfUsuario(cpf);
-        return usuario;
     }
 }

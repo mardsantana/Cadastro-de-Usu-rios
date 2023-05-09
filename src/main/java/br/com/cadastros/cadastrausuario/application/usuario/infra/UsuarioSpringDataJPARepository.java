@@ -8,5 +8,4 @@ import java.util.UUID;
 
 public interface UsuarioSpringDataJPARepository extends JpaRepository<Usuario, UUID> {
     Optional<Object> findByCpf(String cpf);
-    Usuario findByCpfUsuario(String cpf);
 }

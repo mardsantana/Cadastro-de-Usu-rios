@@ -21,10 +21,11 @@ public class ParenteInfraRepository implements ParenteRepository {
         log.info("[finish] UsuarioInfraRepository - saveP");
         return parente;
     }
-
     @Override
     public List<Parente> buscaParentesPorUsuario(UUID idUsuario) {
+        log.info("[start] ParenteInfraRepository - buscaParentesPorUsuario");
         List<Parente> listaParentes = parenteSpringDataJPARepository.findParenteByIdUsuario(idUsuario);
+        log.info("[finish] ParenteInfraRepository - buscaParentesPorUsuario");
         return listaParentes;
     }
 

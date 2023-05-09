@@ -23,7 +23,6 @@ public class ParenteApplicationService implements ParenteService{
         log.info("[finish] UsuarioApplicationService - criaParente");
         return ParenteResponse.builder().idParente(parente.getIdParente()).build();
     }
-
     @Override
     public List<Parente> buscaParentesPorUsuario(UUID idUsuario) {
         log.info("[start] ParenteApplicationService - buscaParentesPorUsuario");

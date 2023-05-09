@@ -41,7 +41,9 @@ public class UsuarioApplicationService implements UsuarioService{
 
     @Override
     public UsuarioListDTO buscaUsuarioCPF(String cpf) {
-        Usuario usuario = usuarioRepository.buscaPorCPF(cpf);
+        log.info("[start] UsuarioApplicationService - buscaUsuarioCPF");
+        Usuario usuario = usuarioRepository.buscarUsuarioPorCpf(cpf);
+        log.info("[finish] UsuarioApplicationService - buscaUsuarioCPF");
         return new UsuarioListDTO(usuario);
     }
 }

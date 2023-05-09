@@ -29,10 +29,11 @@ public class UsuarioController {
     @GetMapping(value = "/{cpf}")
     @ResponseStatus(code = HttpStatus.OK)
     UsuarioListDTO buscaUsuarioCPF(@PathVariable String cpf){
+        log.info("[start] UsuarioController - buscaUsuarioCPF");
         UsuarioListDTO buscaUsuario = usuarioService.buscaUsuarioCPF(cpf);
+        log.info("[finish] UsuarioController - buscaUsuarioCPF");
         return buscaUsuario;
     }
-
     @DeleteMapping(value = "/{cpf}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     void deleteUsuarioAtravesCPF(@PathVariable String cpf) {

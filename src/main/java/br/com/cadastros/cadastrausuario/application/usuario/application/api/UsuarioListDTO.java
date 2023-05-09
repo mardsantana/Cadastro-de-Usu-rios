@@ -1,10 +1,8 @@
 package br.com.cadastros.cadastrausuario.application.usuario.application.api;
 
-import br.com.cadastros.cadastrausuario.application.parentes.domain.Parente;
 import br.com.cadastros.cadastrausuario.application.usuario.domain.Usuario;
 import lombok.Value;
 
-import java.util.List;
 import java.util.UUID;
 
 @Value
