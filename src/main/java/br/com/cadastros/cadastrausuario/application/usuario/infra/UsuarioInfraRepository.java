@@ -1,9 +1,12 @@
 package br.com.cadastros.cadastrausuario.application.usuario.infra;
 
+import br.com.cadastros.cadastrausuario.application.handler.APIException;
 import br.com.cadastros.cadastrausuario.application.usuario.domain.Usuario;
 import br.com.cadastros.cadastrausuario.application.usuario.application.repository.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 
 
@@ -16,7 +19,11 @@ public class UsuarioInfraRepository implements UsuarioRepository {
     @Override
     public Usuario save(Usuario usuario) {
         log.info("[start] UsuarioInfraRepository - save");
-        usuarioSpringDataJPARepository.save(usuario);
+        try {
+            usuarioSpringDataJPARepository.save(usuario);
+        } catch (DataIntegrityViolationException e){
+            throw APIException.build(HttpStatus.BAD_REQUEST,"Existem dados duplicados", e);
+        }
         log.info("[finsih] UsuarioInfraRepository - save");
         return usuario;
     }
@@ -24,7 +31,7 @@ public class UsuarioInfraRepository implements UsuarioRepository {
     public Usuario buscarUsuarioPorCpf(String cpf) {
         log.info("[start] UsuarioInfraRepository - buscarUsuarioPorCpf");
         Usuario usuario = (Usuario) usuarioSpringDataJPARepository.findByCpf(cpf)
-                .orElseThrow(() -> new RuntimeException("Usuário não Encontrado"));
+                .orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND, "Usuário não Encontrado"));
         log.info("[start] UsuarioInfraRepository - buscarUsuarioPorCpf");
         return usuario;
     }
