@@ -33,4 +33,7 @@ public class ParenteController {
         log.info("[finish] ParenteController - getParentesDoUsuario");
         return ParenteListDTO.parseToList(parentesDoUsuario);
     }
+
+    //Criar Método para deletar o parente/parentes através do ID do usuário, ou quando o usuário for deletado
+
 }
