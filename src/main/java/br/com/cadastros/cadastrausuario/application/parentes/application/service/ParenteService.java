@@ -10,4 +10,5 @@ import java.util.UUID;
 public interface ParenteService {
     ParenteResponse criaParente(ParenteRequest parenteRequest);
     List<Parente> buscaParentesPorUsuario(UUID idUsuario);
+    void deletaParentePorCPFDeUsuario(String cpf, UUID idParente);
 }
