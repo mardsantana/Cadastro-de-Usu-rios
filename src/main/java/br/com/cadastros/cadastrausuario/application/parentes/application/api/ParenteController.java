@@ -41,7 +41,13 @@ public class ParenteController {
         parenteService.deletaParentePorCPFDeUsuario(cpf, idParente);
         log.info("[finish] ParenteController - deliteParentePorCPFUsuario");
     }
-//    @PatchMapping(value = "idParente")
-//    @ResponseStatus(HttpStatus.NO_CONTENT)
-//    void patchParente(@PathVariable String cpf, @PathVariable UUID idParente, @Valid @Requ
+    @PatchMapping(value = "/{cpf}/{idParente}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    void patchParente(@PathVariable String cpf, @PathVariable UUID idParente,
+                      @Valid @RequestBody ParenteAlteracaoRequest parenteAlteracaoRequest){
+        log.info("[start] ParenteController - patchParente");
+        log.info("[cpf]{} - [idParente]{}", cpf, idParente);
+        parenteService.alteraParenteDoUsuarioPorCPF(cpf, idParente, parenteAlteracaoRequest);
+        log.info("[finish] ParenteController - patchParente");
+    }
 }

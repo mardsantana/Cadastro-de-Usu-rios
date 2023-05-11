@@ -1,5 +1,6 @@
 package br.com.cadastros.cadastrausuario.application.parentes.domain;
 
+import br.com.cadastros.cadastrausuario.application.parentes.application.api.ParenteAlteracaoRequest;
 import br.com.cadastros.cadastrausuario.application.parentes.application.api.ParenteRequest;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -32,5 +33,9 @@ public class Parente {
         this.parentesco = parenteRequest.getParentesco();
         this.idUsuario = parenteRequest.getIdUsuario();
         this.idParente = UUID.randomUUID();
+    }
+    public void altera(ParenteAlteracaoRequest parenteAlteracaoRequest) {
+        this.sobrenome = parenteAlteracaoRequest.getSobrenome();
+        this.parentesco = parenteAlteracaoRequest.getParentesco();
     }
 }

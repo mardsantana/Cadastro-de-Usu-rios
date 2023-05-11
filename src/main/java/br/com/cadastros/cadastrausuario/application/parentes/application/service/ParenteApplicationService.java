@@ -1,5 +1,6 @@
 package br.com.cadastros.cadastrausuario.application.parentes.application.service;
 
+import br.com.cadastros.cadastrausuario.application.parentes.application.api.ParenteAlteracaoRequest;
 import br.com.cadastros.cadastrausuario.application.parentes.application.api.ParenteRequest;
 import br.com.cadastros.cadastrausuario.application.parentes.application.api.ParenteResponse;
 import br.com.cadastros.cadastrausuario.application.parentes.application.repository.ParenteRepository;
@@ -40,5 +41,15 @@ public class ParenteApplicationService implements ParenteService{
         Parente parente = parenteRepository.buscaParentePorID(idParente);
         parenteRepository.deletaParente(parente);
         log.info("[finish] ParenteApplicationService - deletaParentePorCPFDeUusario");
+    }
+
+    @Override
+    public void alteraParenteDoUsuarioPorCPF(String cpf, UUID idParente, ParenteAlteracaoRequest parenteAlteracaoRequest) {
+        log.info("[start] ParenteApplicationService - alteraParenteDoUsuarioPorCPF");
+        usuarioService.buscaUsuarioCPF(cpf);
+        Parente parente = parenteRepository.buscaParentePorID(idParente);
+        parente.altera(parenteAlteracaoRequest);
+        parenteRepository.save(parente);
+        log.info("[finish] ParenteApplicationService - alteraParenteDoUsuarioPorCPF");
     }
 }

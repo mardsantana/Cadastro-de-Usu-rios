@@ -44,5 +44,4 @@ public class ParenteInfraRepository implements ParenteRepository {
         parenteSpringDataJPARepository.delete(parente);
         log.info("[finish] ParenteInfraRepository - deletaParente");
     }
-
 }
