@@ -13,13 +13,11 @@ public class ParenteListDTO {
     private UUID idParente;
     private String nome;
     private String sobrenome;
-    private String parentesco;
 
     public ParenteListDTO(Parente parente) {
         this.idParente = parente.getIdParente();
         this.nome = parente.getNome();
         this.sobrenome = parente.getSobrenome();
-        this.parentesco = parente.getParentesco();
     }
     public static List<ParenteListDTO> parseToList(List<Parente> parentesDoUsuario) {
         return parentesDoUsuario.stream()

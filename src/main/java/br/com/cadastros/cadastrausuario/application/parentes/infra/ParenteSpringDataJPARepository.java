@@ -8,5 +8,4 @@ import java.util.UUID;
 
 public interface ParenteSpringDataJPARepository extends JpaRepository<Parente, UUID> {
     Parente save(Parente parente);
-    List<Parente> findParenteByIdUsuario(UUID idUsuario);
 }

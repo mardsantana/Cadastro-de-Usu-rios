@@ -8,7 +8,6 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.UUID;
 
 @Service
 @Log4j2
@@ -19,7 +18,10 @@ public class UsuarioApplicationService implements UsuarioService{
     @Override
     public UsuarioResponse criaUsuario(UsuarioRequest usuarioRequest) {
         log.info("[start] UsuarioApplicationService - criaUsuario");
-        Usuario usuario = usuarioRepository.save(new Usuario(usuarioRequest));
+        Usuario usuario1 = new Usuario(usuarioRequest);
+        log.info("usuario1 = {}", usuario1);
+        Usuario usuario = usuarioRepository.save(usuario1);
+        log.info("usuarioFinal = {}", usuario);
         log.info("[finish] UsuarioApplicationService - criaUsuario");
         return UsuarioResponse.builder().idUsuario(usuario.getIdUsuario()).build();
     }
@@ -38,12 +40,18 @@ public class UsuarioApplicationService implements UsuarioService{
         usuarioRepository.save(usuario);
         log.info("[finish] UsuarioApplicationService - patchUsuario");
     }
-
     @Override
     public UsuarioListDTO buscaUsuarioCPF(String cpf) {
         log.info("[start] UsuarioApplicationService - buscaUsuarioCPF");
         Usuario usuario = usuarioRepository.buscarUsuarioPorCpf(cpf);
         log.info("[finish] UsuarioApplicationService - buscaUsuarioCPF");
         return new UsuarioListDTO(usuario);
+    }
+    @Override
+    public List<UsuarioListDTO> buscaUsuariosGerais() {
+        log.info("[start] UsuarioApplicationService - buscaUsuariosGerais");
+        List<Usuario> usuarios = usuarioRepository.buscaUsuariosGerais();
+        log.info("[finish] UsuarioApplicationService - buscaUsuariosGerais");
+        return UsuarioListDTO.converte(usuarios);
     }
 }

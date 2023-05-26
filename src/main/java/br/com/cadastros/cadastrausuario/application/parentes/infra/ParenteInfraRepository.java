@@ -24,13 +24,6 @@ public class ParenteInfraRepository implements ParenteRepository {
         return parente;
     }
     @Override
-    public List<Parente> buscaParentesPorUsuario(UUID idUsuario) {
-        log.info("[start] ParenteInfraRepository - buscaParentesPorUsuario");
-        List<Parente> listaParentes = parenteSpringDataJPARepository.findParenteByIdUsuario(idUsuario);
-        log.info("[finish] ParenteInfraRepository - buscaParentesPorUsuario");
-        return listaParentes;
-    }
-    @Override
     public Parente buscaParentePorID(UUID idParente) {
         log.info("[start] ParenteInfraRepository - buscaParentePorID");
         var parente = parenteSpringDataJPARepository.findById(idParente).orElseThrow(

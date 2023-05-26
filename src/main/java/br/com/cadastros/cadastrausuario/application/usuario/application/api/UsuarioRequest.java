@@ -1,5 +1,6 @@
 package br.com.cadastros.cadastrausuario.application.usuario.application.api;
 
+import br.com.cadastros.cadastrausuario.application.parentes.application.api.ParenteRequest;
 import br.com.cadastros.cadastrausuario.application.parentes.domain.Parente;
 import jakarta.persistence.Column;
 import jakarta.validation.Valid;
@@ -22,6 +23,6 @@ public class UsuarioRequest {
     private String cpf;
     @NotNull
     private String endereco;
-    @Valid
-    private List<Parente> parentes;
+
+    private List<ParenteRequest> parentes;
 }

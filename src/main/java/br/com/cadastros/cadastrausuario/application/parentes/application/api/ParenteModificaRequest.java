@@ -12,4 +12,6 @@ public class ParenteModificaRequest {
     private String nome;
     @NotBlank
     private String sobrenome;
+    @NotBlank
+    private String parentesco;
 }

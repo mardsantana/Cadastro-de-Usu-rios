@@ -5,7 +5,6 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Value;
 
-import java.util.List;
 
 @Value
 public class UsuarioModificaRequest {
@@ -15,5 +14,4 @@ public class UsuarioModificaRequest {
     private String sobrenome;
     @NotNull
     private String endereco;
-    private List<ParenteRequest> parentes;
 }

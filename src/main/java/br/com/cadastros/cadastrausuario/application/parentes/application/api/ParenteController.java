@@ -1,6 +1,5 @@
 package br.com.cadastros.cadastrausuario.application.parentes.application.api;
 
-import br.com.cadastros.cadastrausuario.application.parentes.domain.Parente;
 import br.com.cadastros.cadastrausuario.application.parentes.application.service.ParenteService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -8,7 +7,6 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -26,16 +24,9 @@ public class ParenteController {
         log.info("[finish] UsuarioController - postParente");
         return parenteCriado;
     }
-    @GetMapping("/usuario/{idUsuario}")
-    List<ParenteListDTO> getParentesDoUsuario(@PathVariable UUID idUsuario) {
-        log.info("[start] ParenteController - getParentesDoUsuario");
-        List<Parente> parentesDoUsuario = parenteService.buscaParentesPorUsuario(idUsuario);
-        log.info("[finish] ParenteController - getParentesDoUsuario");
-        return ParenteListDTO.parseToList(parentesDoUsuario);
-    }
     @DeleteMapping(value = "/{cpf}/{idParente}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
-    void deliteParentePorCPFUsuario(@PathVariable String cpf, @PathVariable UUID idParente){
+    void deleteParentePorCPFUsuario(@PathVariable String cpf, @PathVariable UUID idParente){
         log.info("[start] ParenteController - deliteParentePorCPFUsuario");
         log.info("[cpf]{} - [idParente]{}", cpf, idParente);
         parenteService.deletaParentePorCPFDeUsuario(cpf, idParente);
@@ -44,10 +35,10 @@ public class ParenteController {
     @PatchMapping(value = "/{cpf}/{idParente}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     void patchParente(@PathVariable String cpf, @PathVariable UUID idParente,
-                      @Valid @RequestBody ParenteAlteracaoRequest parenteAlteracaoRequest){
+                      @Valid @RequestBody ParenteModificaRequest parenteModificaRequest){
         log.info("[start] ParenteController - patchParente");
         log.info("[cpf]{} - [idParente]{}", cpf, idParente);
-        parenteService.alteraParenteDoUsuarioPorCPF(cpf, idParente, parenteAlteracaoRequest);
+        parenteService.alteraParenteDoUsuarioPorCPF(cpf, idParente, parenteModificaRequest);
         log.info("[finish] ParenteController - patchParente");
     }
 }

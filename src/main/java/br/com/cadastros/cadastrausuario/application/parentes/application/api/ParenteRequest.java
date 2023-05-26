@@ -10,7 +10,4 @@ public class ParenteRequest {
     private String nome;
     @NotBlank
     private String sobrenome;
-    @NotBlank
-    private String parentesco;
-    private UUID idUsuario;
 }

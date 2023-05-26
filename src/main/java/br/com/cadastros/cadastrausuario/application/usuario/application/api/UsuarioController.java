@@ -25,7 +25,6 @@ public class UsuarioController {
         log.info("[finish] UsuarioController - postUsuario");
         return usuarioCriado;
     }
-
     @GetMapping(value = "/{cpf}")
     @ResponseStatus(code = HttpStatus.OK)
     UsuarioListDTO buscaUsuarioCPF(@PathVariable String cpf){
@@ -50,4 +49,13 @@ public class UsuarioController {
         usuarioService.patchUsuario(cpf, usuarioModificaRequest);
         log.info("[finsih] UsuarioController - patchUsuario");
     }
+    @GetMapping
+    @ResponseStatus(code = HttpStatus.OK)
+    List<UsuarioListDTO> buscaUsuariosGerais(){
+        log.info("[start] UsuarioController - buscaUsuariosGerais");
+        List<UsuarioListDTO> usuarios = usuarioService.buscaUsuariosGerais();
+        log.info("[finish] UsuarioController - buscaUsuariosGerais");
+        return  usuarios;
+    }
+
 }

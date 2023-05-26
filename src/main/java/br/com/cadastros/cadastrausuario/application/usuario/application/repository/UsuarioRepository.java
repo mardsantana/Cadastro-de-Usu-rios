@@ -10,4 +10,5 @@ public interface UsuarioRepository {
     Usuario save(Usuario usuario);
     Usuario buscarUsuarioPorCpf(String cpf);
     void deleteUsuario(Usuario usuario);
+    List<Usuario> buscaUsuariosGerais();
 }

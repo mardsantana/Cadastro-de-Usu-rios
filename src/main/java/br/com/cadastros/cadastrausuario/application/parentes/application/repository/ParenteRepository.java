@@ -8,7 +8,6 @@ import java.util.UUID;
 
 public interface ParenteRepository {
     Parente save(Parente parente);
-    List<Parente> buscaParentesPorUsuario(UUID idUsuario);
     Parente buscaParentePorID(UUID idParente);
     void deletaParente(Parente parente);
 }

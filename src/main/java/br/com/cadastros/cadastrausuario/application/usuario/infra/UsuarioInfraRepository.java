@@ -9,6 +9,8 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 
 @Repository
 @Log4j2
@@ -40,5 +42,12 @@ public class UsuarioInfraRepository implements UsuarioRepository {
         log.info("[start] UsuarioInfraRepository - deleteUsuario");
         usuarioSpringDataJPARepository.delete(usuario);
         log.info("[finish] UsuarioInfraRepository - deleteUsuario");
+    }
+    @Override
+    public List<Usuario> buscaUsuariosGerais() {
+        log.info("[start] UsuarioInfraRepository - buscaUsuariosGerais");
+        List<Usuario> usuariosGerais = usuarioSpringDataJPARepository.findAll();
+        log.info("[finish] UsuarioInfraRepository - buscaUsuariosGerais");
+        return usuariosGerais;
     }
 }
