@@ -1,6 +1,7 @@
 package br.com.cadastros.cadastrausuario.application.usuario.application.api;
 
 import br.com.cadastros.cadastrausuario.application.usuario.application.service.UsuarioService;
+import br.com.cadastros.cadastrausuario.application.usuario.domain.Usuario;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -8,7 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @Log4j2
@@ -27,7 +27,7 @@ public class UsuarioController {
     }
     @GetMapping(value = "/{cpf}")
     @ResponseStatus(code = HttpStatus.OK)
-    UsuarioListDTO buscaUsuarioCPF(@PathVariable String cpf){
+    UsuarioListDTO buscaUsuarioCPF(Usuario usuario, String cpf){
         log.info("[start] UsuarioController - buscaUsuarioCPF");
         UsuarioListDTO buscaUsuario = usuarioService.buscaUsuarioCPF(cpf);
         log.info("[finish] UsuarioController - buscaUsuarioCPF");
@@ -49,13 +49,13 @@ public class UsuarioController {
         usuarioService.patchUsuario(cpf, usuarioModificaRequest);
         log.info("[finsih] UsuarioController - patchUsuario");
     }
-    @GetMapping
+    @GetMapping(value = {"/{cpf}", "/{nome}"})
     @ResponseStatus(code = HttpStatus.OK)
     List<UsuarioListDTO> buscaUsuariosGerais(){
         log.info("[start] UsuarioController - buscaUsuariosGerais");
         List<UsuarioListDTO> usuarios = usuarioService.buscaUsuariosGerais();
         log.info("[finish] UsuarioController - buscaUsuariosGerais");
-        return  usuarios;
+        return usuarios;
     }
 
 }

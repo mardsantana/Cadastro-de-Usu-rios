@@ -16,9 +16,10 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Entity
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@NoArgsConstructor(access = AccessLevel.PUBLIC)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
+@Data
 @ToString
 public class Usuario {
 

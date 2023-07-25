@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.UUID;
 
 public interface ParenteService {
-    ParenteResponse criaParente(ParenteRequest parenteRequest);
+//    ParenteResponse criaParente(ParenteRequest parenteRequest);
     void deletaParentePorCPFDeUsuario(String cpf, UUID idParente);
     void alteraParenteDoUsuarioPorCPF(String cpf, UUID idParente, @Valid ParenteModificaRequest parenteAlteracaoRequest);
 }

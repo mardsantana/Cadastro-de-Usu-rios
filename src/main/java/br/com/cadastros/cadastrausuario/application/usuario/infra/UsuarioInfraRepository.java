@@ -1,6 +1,7 @@
 package br.com.cadastros.cadastrausuario.application.usuario.infra;
 
 import br.com.cadastros.cadastrausuario.application.handler.APIException;
+import br.com.cadastros.cadastrausuario.application.parentes.domain.Parente;
 import br.com.cadastros.cadastrausuario.application.usuario.domain.Usuario;
 import br.com.cadastros.cadastrausuario.application.usuario.application.repository.UsuarioRepository;
 import lombok.RequiredArgsConstructor;

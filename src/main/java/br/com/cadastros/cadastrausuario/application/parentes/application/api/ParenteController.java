@@ -16,14 +16,14 @@ import java.util.UUID;
 public class ParenteController {
     private final ParenteService parenteService;
 
-    @PostMapping
-    @ResponseStatus(code = HttpStatus.CREATED)
-    ParenteResponse postParente(@Valid @RequestBody ParenteRequest parenteRequest) {
-        log.info("[start] UsuarioController - postParente");
-        ParenteResponse parenteCriado = parenteService.criaParente(parenteRequest);
-        log.info("[finish] UsuarioController - postParente");
-        return parenteCriado;
-    }
+//    @PostMapping
+//    @ResponseStatus(code = HttpStatus.CREATED)
+//    ParenteResponse postParente(@Valid @RequestBody ParenteRequest parenteRequest) {
+//        log.info("[start] UsuarioController - postParente");
+//        ParenteResponse parenteCriado = parenteService.criaParente(parenteRequest);
+//        log.info("[finish] UsuarioController - postParente");
+//        return parenteCriado;
+//    }
     @DeleteMapping(value = "/{cpf}/{idParente}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     void deleteParentePorCPFUsuario(@PathVariable String cpf, @PathVariable UUID idParente){

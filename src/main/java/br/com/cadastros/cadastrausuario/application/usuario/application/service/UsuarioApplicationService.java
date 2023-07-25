@@ -1,5 +1,6 @@
 package br.com.cadastros.cadastrausuario.application.usuario.application.service;
 
+import br.com.cadastros.cadastrausuario.application.parentes.domain.Parente;
 import br.com.cadastros.cadastrausuario.application.usuario.application.api.*;
 import br.com.cadastros.cadastrausuario.application.usuario.domain.Usuario;
 import br.com.cadastros.cadastrausuario.application.usuario.application.repository.UsuarioRepository;

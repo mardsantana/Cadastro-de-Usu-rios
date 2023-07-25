@@ -23,6 +23,5 @@ public class UsuarioRequest {
     private String cpf;
     @NotNull
     private String endereco;
-
     private List<ParenteRequest> parentes;
 }

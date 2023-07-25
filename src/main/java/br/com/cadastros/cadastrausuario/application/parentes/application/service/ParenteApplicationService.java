@@ -20,13 +20,13 @@ import java.util.UUID;
 public class ParenteApplicationService implements ParenteService{
     private final ParenteRepository parenteRepository;
     private final UsuarioService usuarioService;
-    @Override
-    public ParenteResponse criaParente(ParenteRequest parenteRequest) {
-        log.info("[start] UsuarioApplicationService - criaParente");
-        Parente parente = parenteRepository.save(new Parente(parenteRequest));
-        log.info("[finish] UsuarioApplicationService - criaParente");
-        return ParenteResponse.builder().idParente(parente.getIdParente()).build();
-    }
+//    @Override
+//    public ParenteResponse criaParente(ParenteRequest parenteRequest) {
+//        log.info("[start] UsuarioApplicationService - criaParente");
+//        Parente parente = parenteRepository.save(new Parente(parenteRequest));
+//        log.info("[finish] UsuarioApplicationService - criaParente");
+//        return ParenteResponse.builder().idParente(parente.getIdParente()).build();
+//    }
     @Override
     public void deletaParentePorCPFDeUsuario(String cpf, UUID idParente) {
         log.info("[start] ParenteApplicationService - deletaParentePorCPFDeUusario");
@@ -41,7 +41,7 @@ public class ParenteApplicationService implements ParenteService{
         usuarioService.buscaUsuarioCPF(cpf);
         Parente parente = parenteRepository.buscaParentePorID(idParente);
         parente.altera(parenteAlteracaoRequest);
-        parenteRepository.save(parente);
+//        parenteRepository.save(parente);
         log.info("[finish] ParenteApplicationService - alteraParenteDoUsuarioPorCPF");
     }
 }

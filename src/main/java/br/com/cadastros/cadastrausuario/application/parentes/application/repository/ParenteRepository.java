@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.UUID;
 
 public interface ParenteRepository {
-    Parente save(Parente parente);
+//    Parente save(Parente parente);
     Parente buscaParentePorID(UUID idParente);
     void deletaParente(Parente parente);
 }

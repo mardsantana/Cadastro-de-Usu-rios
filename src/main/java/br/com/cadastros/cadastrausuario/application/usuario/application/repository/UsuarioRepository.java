@@ -1,5 +1,6 @@
 package br.com.cadastros.cadastrausuario.application.usuario.application.repository;
 
+import br.com.cadastros.cadastrausuario.application.parentes.domain.Parente;
 import br.com.cadastros.cadastrausuario.application.usuario.domain.Usuario;
 
 import java.util.List;

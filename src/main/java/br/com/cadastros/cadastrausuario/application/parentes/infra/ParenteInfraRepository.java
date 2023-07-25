@@ -16,13 +16,13 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class ParenteInfraRepository implements ParenteRepository {
     private final ParenteSpringDataJPARepository parenteSpringDataJPARepository;
-    @Override
-    public Parente save(Parente parente) {
-        log.info("[start] UsuarioInfraRepository - saveP");
-        parenteSpringDataJPARepository.save(parente);
-        log.info("[finish] UsuarioInfraRepository - saveP");
-        return parente;
-    }
+//    @Override
+//    public Parente save(Parente parente) {
+//        log.info("[start] UsuarioInfraRepository - saveP");
+//        parenteSpringDataJPARepository.save(parente);
+//        log.info("[finish] UsuarioInfraRepository - saveP");
+//        return parente;
+//    }
     @Override
     public Parente buscaParentePorID(UUID idParente) {
         log.info("[start] ParenteInfraRepository - buscaParentePorID");
